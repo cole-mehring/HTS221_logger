@@ -53,7 +53,7 @@ def get_weather():
         current_weather = weather_formatted[0]["description"] # zeroeth index has description
         current_pressure = main_formatted["pressure"]
 
-        return current_temperature, current_humidity, current_windspeed, current_wind_gusts, current_wind_direction, current_weather, current_humidity
+        return current_temperature, current_humidity, current_windspeed, current_wind_gusts, current_wind_direction, current_weather, current_pressure
     else:
         # Some sort of error occurred. Return errors.
         return "Error!", "Error!", "Error!", "Error!", "Error!", "Error!", "Error!"
