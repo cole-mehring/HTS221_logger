@@ -15,6 +15,8 @@ from pprint import pprint
 from weather_data import degToCompass
 from weather_data import get_weather
 
+from HTS221_measurement import HTS221_measurement
+
 # Function to find the next available row in our spreadsheet
 def next_available_row(worksheet):
     str_list = list(filter(None, worksheet.col_values(1)))
@@ -35,6 +37,8 @@ current_time = now.strftime("%H:%M:%S") #format into text
 today = date.today()
 current_date = today.strftime("%m/%d/%Y") #format into text
 
+# Get internal measurement
+internal_measurement = HTS221_measurement()
 
 # Get the weather!
 weather = get_weather()
@@ -45,8 +49,8 @@ next_row = next_available_row(sheet)
 # Begin filling out the information!
 sheet.update_cell(next_row, 1, current_date)
 sheet.update_cell(next_row, 2, current_time)
-# sheet.update_cell(next_row, 3, internal_temperature)
-# sheet.update_cell(next_row, 4, internal_humidity)
+sheet.update_cell(next_row, 3, internal_measurement[0])
+sheet.update_cell(next_row, 4, internal_measurement[1])
 sheet.update_cell(next_row, 5, weather[0])
 sheet.update_cell(next_row, 6, weather[1])
 sheet.update_cell(next_row, 7, weather[2])
