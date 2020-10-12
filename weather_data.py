@@ -49,11 +49,11 @@ def get_weather():
         current_humidity = main_formatted["humidity"]
         current_windspeed = wind_formatted["speed"]
         current_wind_direction = degToCompass(wind_formatted["deg"])
-        current_wind_gusts = wind_formatted["gust"]
+        # current_wind_gusts = wind_formatted["gust"]
         current_weather = weather_formatted[0]["description"] # zeroeth index has description
         current_pressure = main_formatted["pressure"]
 
-        return current_temperature, current_humidity, current_windspeed, current_wind_gusts, current_wind_direction, current_weather, current_pressure
+        return current_temperature, current_humidity, current_windspeed, current_wind_direction, current_weather, current_pressure
     else:
         # Some sort of error occurred. Return errors.
         return "Error!", "Error!", "Error!", "Error!", "Error!", "Error!", "Error!"
